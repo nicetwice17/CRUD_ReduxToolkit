@@ -1,0 +1,91 @@
+.container_wrapper {
+  padding: 50px;
+}
+.user_render_container {
+  padding: 50px;
+  border: 1px solid #C0C0C0;
+  margin-top: 20px;
+}
+.user_item_wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  .user_avatar {
+    width: 128px;
+    height: 128px;
+    background-color: #C0C0C0;
+    img {
+      object-fit: cover;
+    }
+  }
+  .user_name {
+    color: #2F4F4F;
+  }
+  .user_email {
+    color: #D2691E;
+  }
+  .user_remove_button {
+    margin-left: auto;
+  }
+}
+.action_btn {
+  border: none;
+  background-color: #6495ED;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal_overlay {
+  background-color: rgba(0,0,0,0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.user_modal {
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+  padding: 10px 50px;
+  background-color: #ffffff;
+  .form_title {
+    color: #D2691E;
+  }
+
+  form {
+    .form_row {
+      display: flex;
+      justify-content: space-between;
+      .form_label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+
+      .form_input {
+        margin-top: 5px;
+      }
+
+      .form_input_file {
+        width: 184px;
+      }
+    }
+  }
+}
