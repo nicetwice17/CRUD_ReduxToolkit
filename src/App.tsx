@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {UsersContainer} from "./pages/Users/UsersContainer";
 
 function App() {
