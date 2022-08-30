@@ -13,7 +13,7 @@ const initialFormData = Object.freeze({
 
 export const UsersContainer = () => {
 
-    const [createUserModal, setCreateUserModal] = useState(null);
+    const [createUserModal, setCreateUserModal] = useState(false);
     const [updateUserModal, setUpdateUserModal] = useState(null);
     const [formData, setChangesFormData] = useState(initialFormData);
 
@@ -51,7 +51,7 @@ export const UsersContainer = () => {
         if(type === 'create') {
             dispatch(createUser(formData))
         } else if (type === 'update') {
-            dispatch(updateUser(updateUserModal.id, formData))
+            dispatch(updateUser({id: updateUserModal.id, data: formData}))
         }
         onCancel()
     }

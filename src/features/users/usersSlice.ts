@@ -1,6 +1,11 @@
 import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {usersApi} from "./usersApi";
 
+interface updateUserInterface {
+    id: number,
+    data: object
+}
+
 const usersAdapter = createEntityAdapter()
 
 const initialState = usersAdapter.getInitialState({
@@ -21,9 +26,9 @@ export const fetchUsers = createAsyncThunk(
 
 export const createUser = createAsyncThunk(
     'users/createUser',
-    async (data) => {
+    async (payload: object) => {
         try {
-            const response = await usersApi.createUserApi(data)
+            const response = await usersApi.createUserApi(payload)
             return response
         } catch (err) {
             console.log('error', err)
@@ -33,9 +38,9 @@ export const createUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
     'users/updateUser',
-    async (id, data) => {
+    async (payload: updateUserInterface) => {
         try {
-            const response = await usersApi.updateUserApi(id, data)
+            const response = await usersApi.updateUserApi(payload.id, payload.data)
             return response
         } catch (err) {
             console.log('error', err)
@@ -45,7 +50,7 @@ export const updateUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
     'users/deleteUser',
-    async (id) => {
+    async (id: number) => {
         try {
             await usersApi.deleteUserApi(id)
             return id
@@ -97,8 +102,9 @@ const usersSlice = createSlice({
 
             builder
                 .addCase(updateUser.pending, state => {state.usersLoadingStatus = 'loading'})
-                .addCase(updateUser.fulfilled, (state, action: any) => {
-                    usersSlice.caseReducers.updateUser(state, action.payload)
+                .addCase(updateUser.fulfilled, (state, {payload}: any) => {
+                    const {id, ...changes} = payload
+                    usersSlice.caseReducers.updateUser(state, {id, changes})
                     state.usersLoadingStatus = 'success';
                 })
                 .addCase(updateUser.rejected, state => {
