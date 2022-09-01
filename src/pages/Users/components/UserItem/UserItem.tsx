@@ -1,19 +1,7 @@
 import React from "react"
 import style from "../Users.module.scss"
 import {deleteUser} from "../../../../features/users/usersSlice";
-
-interface UserItemInterfaceUser {
-    user: {
-        avatar: string,
-        email: string,
-        first_name: string,
-        last_name: string,
-        id: number
-    },
-    dispatch: any,
-    onOpenEditModal: (type: string, value: number) => void,
-    entityId: number
-}
+import {UserItemInterfaceUser} from "../../interfaces/interfaces";
 
 export const UserItem = (props: UserItemInterfaceUser) => {
     const { avatar, email, first_name, last_name, id } = props.user

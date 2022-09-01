@@ -1,15 +1,7 @@
 import React from "react"
 import style from "./Users.module.scss"
 import {UserItem} from "./UserItem/UserItem";
-
-interface UserListInterface {
-    users: {
-      ids: [],
-      entities: []
-    },
-    dispatch: object,
-    onOpenModal: (type: string) => void
-}
+import {UserListInterface} from "../interfaces/interfaces"
 
 export const UsersList = (props: UserListInterface) => {
 

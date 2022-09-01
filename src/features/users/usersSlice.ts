@@ -1,10 +1,6 @@
 import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {usersApi} from "./usersApi";
-
-interface updateUserInterface {
-    id: number,
-    data: object
-}
+import {UpdateUserInterface} from "./interfaces/interfaces"
 
 const usersAdapter = createEntityAdapter()
 
@@ -38,7 +34,7 @@ export const createUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
     'users/updateUser',
-    async (payload: updateUserInterface) => {
+    async (payload: UpdateUserInterface) => {
         try {
             const response = await usersApi.updateUserApi(payload.id, payload.data)
             return response

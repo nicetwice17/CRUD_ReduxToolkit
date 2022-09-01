@@ -1,17 +1,5 @@
 import React from "react";
-
-interface InputInterface {
-    onChange: (event: any) => void,
-    placeholder: string,
-    required: boolean,
-    labelClass: string,
-    inputClass: string,
-    fields: any,
-    fieldName: string,
-    type: string,
-    valueName: string
-
-}
+import {InputInterface} from "./interfaces/interfaces"
 
 export const FormInput = (props: InputInterface) => {
 

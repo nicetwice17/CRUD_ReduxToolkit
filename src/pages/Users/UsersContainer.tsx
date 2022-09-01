@@ -4,7 +4,7 @@ import {UsersList} from "./components/UsersList";
 import {createUser, fetchUsers, updateUser} from "../../features/users/usersSlice";
 import {UserCreateUpdateModal} from "./modals/UserCreateUpdateModal";
 import style from "../Users/components/Users.module.scss"
-import {RootState, useAppDispatch} from "../../app/store";
+import {RootState, useAppDispatch} from "../../store/store";
 
 
 

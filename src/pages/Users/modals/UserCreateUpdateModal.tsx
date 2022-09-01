@@ -1,14 +1,7 @@
 import React from "react"
 import style from "./../components/Users.module.scss"
 import {FormInput} from "../../../components/FormInput";
-
-interface UserModalInterface {
-    createModal: (type: string, value: string) => string | object ,
-    onChange: (event: any) => void,
-    onCancel: () => void,
-    onSubmit: (type: string, data: object) => void,
-    fields: any
-}
+import {UserModalInterface} from "../interfaces/interfaces"
 
 export const UserCreateUpdateModal = (props: UserModalInterface) => {
     const {
