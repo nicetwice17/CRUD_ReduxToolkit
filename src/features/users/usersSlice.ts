@@ -69,6 +69,7 @@ const usersSlice = createSlice({
             updateUser: usersAdapter.updateOne,
             deleteUser: usersAdapter.removeOne
         },
+
         extraReducers: (builder) => {
             builder
                 .addCase(fetchUsers.pending, state => {state.usersLoadingStatus = 'loading'})
@@ -114,9 +115,7 @@ const usersSlice = createSlice({
     }
 )
 
-const {actions, reducer} = usersSlice;
+const { reducer } = usersSlice;
 
 export default reducer;
-
-export const {} = actions
 

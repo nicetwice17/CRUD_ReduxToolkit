@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from "react"
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {UsersList} from "./components/UsersList";
 import {createUser, fetchUsers, updateUser} from "../../features/users/usersSlice";
 import {UserCreateUpdateModal} from "./modals/UserCreateUpdateModal";
 import style from "../Users/components/Users.module.scss"
+import {RootState, useAppDispatch} from "../../app/store";
+
+
+
 const initialFormData = Object.freeze({
     first_name: "",
     last_name: "",
@@ -13,12 +17,12 @@ const initialFormData = Object.freeze({
 
 export const UsersContainer = () => {
 
-    const [createUserModal, setCreateUserModal] = useState(false);
-    const [updateUserModal, setUpdateUserModal] = useState(null);
+    const [createUserModal, setCreateUserModal]: any = useState(false);
+    const [updateUserModal, setUpdateUserModal]: any = useState(null);
     const [formData, setChangesFormData] = useState(initialFormData);
 
-    const users = useSelector((state) => state.users)
-    const dispatch = useDispatch();
+    const users: any = useSelector((state: RootState) => state.users)
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -29,7 +33,7 @@ export const UsersContainer = () => {
         setUpdateUserModal(null)
     }
 
-    const onOpenCreateUpdateUserModal = (type, value = '') => {
+    const onOpenCreateUpdateUserModal = (type: string, value = '') => {
         if(type === 'create') {
             setCreateUserModal(true)
         } else if (type === 'update') {
@@ -39,14 +43,14 @@ export const UsersContainer = () => {
         }
     }
 
-    const handleFormDataChange = (event) => {
+    const handleFormDataChange = (event: any) => {
             setChangesFormData({
                 ...formData,
                 [event.target.name]: event.target.value.trim()
             })
     }
 
-    const onSubmitUserModal = (type, value) => {
+    const onSubmitUserModal = (type: string, value: any) => {
         value.preventDefault()
         if(type === 'create') {
             dispatch(createUser(formData))
