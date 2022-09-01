@@ -31,6 +31,7 @@ export const UsersContainer = () => {
     const onCancel = () => {
         setCreateUserModal(null)
         setUpdateUserModal(null)
+        setChangesFormData(initialFormData)
     }
 
     const onOpenCreateUpdateUserModal = (type: string, value = '') => {
